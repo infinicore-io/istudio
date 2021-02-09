@@ -122,12 +122,12 @@ const options: Options<Required<Args>> = {
     description: "Hostname to use when generating a self signed certificate.",
   },
   "cert-key": { type: "string", path: true, description: "Path to certificate key when using non-generated cert." },
-  "disable-telemetry": { type: "boolean", description: "Disable telemetry." },
+  "disable-telemetry": { type: "boolean", description: "Disable telemetry. default: true" },
   "disable-update-check": {
     type: "boolean",
     description:
       "Disable update check. Without this flag, code-server checks every 6 hours against the latest github release and \n" +
-      "then notifies you once every week that a new release is available.",
+      "then notifies you once every week that a new release is available. default: true",
   },
   help: { type: "boolean", short: "h", description: "Show this output." },
   json: { type: "boolean" },

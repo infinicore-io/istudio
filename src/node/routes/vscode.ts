@@ -38,6 +38,15 @@ router.get("/", async (req, res) => {
 
   options.productConfiguration.codeServerVersion = version
 
+  var disableTelemetry = true;
+  var disableUpdateCheck = true;
+  if (req.args["disable-telemetry"]) {
+    disableTelemetry = !!req.args["disable-telemetry"];
+  }
+  if (req.args["disable-update-check"]) {
+    disableUpdateCheck = !!req.args["disable-update-check"];
+  }
+
   res.send(
     replaceTemplates(
       req,
@@ -45,8 +54,8 @@ router.get("/", async (req, res) => {
       // better as a build step? Or maintain two HTML files again?
       commit !== "development" ? content.replace(/<!-- PROD_ONLY/g, "").replace(/END_PROD_ONLY -->/g, "") : content,
       {
-        disableTelemetry: !!req.args["disable-telemetry"],
-        disableUpdateCheck: !!req.args["disable-update-check"],
+        disableTelemetry: disableTelemetry,
+        disableUpdateCheck: disableUpdateCheck,
       },
     )
       .replace(`"{{REMOTE_USER_DATA_URI}}"`, `'${JSON.stringify(options.remoteUserDataUri)}'`)
