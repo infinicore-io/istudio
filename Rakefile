@@ -7,6 +7,12 @@ currDir = File.expand_path(File.dirname(__FILE__))
 def refRootDir(dir)
     return File.join(currDir, dir)
 end
+desc "Prepare build"
+task :prepareBuild do |t, args|
+    ['yarn'].each do |cmd|
+        doCmd(cmd)
+    end
+end
 
 desc "Build vscode-drawio extension"
 task :buildDrawIOExt do |t, args|
@@ -34,11 +40,11 @@ task :buildIStudio do |t, args|
         'cd release && yarn --production',
         'yarn release:standalone',
     ].each do |cmd|
-        system(cmd)
+        doCmd(cmd)
     end
 end
 
 desc "Build"
-task :build=>[:buildDrawIOExt, :buildIStudio] do |t, args|
+task :build=>[:prepareBuild, :buildDrawIOExt, :buildIStudio] do |t, args|
 end
 
