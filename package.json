@@ -81,6 +81,7 @@
     "httpolyglot": "^0.1.2",
     "js-yaml": "^3.13.1",
     "limiter": "^1.1.5",
+    "node-forge": "0.10.0",
     "pem": "^1.14.2",
     "proxy-agent": "^4.0.0",
     "proxy-from-env": "^1.1.0",
