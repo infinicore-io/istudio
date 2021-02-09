@@ -14,7 +14,6 @@ task :build_istudio do |t, args|
         'yarn release',
         'cd release && yarn --production',
         'yarn release:standalone',
-        'yarn package'
     ].each do |cmd|
         system(cmd)
     end
