@@ -1,0 +1,4 @@
+[submodule "lib/vscode/extensions/vscode-drawio"]
+	path = lib/vscode/extensions/vscode-drawio
+	url = https://github.com/infinicore-io/vscode-drawio.git
+	branch = 01x
